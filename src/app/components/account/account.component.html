@@ -1,0 +1,36 @@
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+  <h2>Complete the registration</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Account Number: </mat-label>
+    <input matInput id="acc-number" type="number" formControlName="accNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description: </mat-label>
+    <textarea matInput id="description" type="text" formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Account Type</mat-label>
+    <mat-select formControlName="accType">
+      <mat-option value=0>CA</mat-option>
+      <mat-option value=1>AC</mat-option>
+      <mat-option value=2>PA</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Initial Sold: </mat-label>
+    <input matInput id="sold-init" type="number" formControlName="soldInit">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Current Sold: </mat-label>
+    <input matInput id="sold-curr" type="number" formControlName="soldCurr">
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit"> Submit</button>
+</form>
+
+<app-table [data]="accounts"></app-table>
