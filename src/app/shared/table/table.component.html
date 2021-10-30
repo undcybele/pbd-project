@@ -1,0 +1,25 @@
+<table mat-table [dataSource]="data">
+  <ng-container matColumnDef="accNumber">
+    <th mat-header-cell *matHeaderCellDef> Account Number</th>
+    <td mat-cell *matCellDef="let account"> {{account.accNumber}} </td>
+  </ng-container>
+  <ng-container matColumnDef="accType">
+    <th mat-header-cell *matHeaderCellDef> Account Type</th>
+    <td mat-cell *matCellDef="let account"> {{accEnum[account.accType]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="soldInit">
+    <th mat-header-cell *matHeaderCellDef> Initial Sold</th>
+    <td mat-cell *matCellDef="let account"> {{account.soldInit}} </td>
+  </ng-container>
+  <ng-container matColumnDef="soldCurr">
+    <th mat-header-cell *matHeaderCellDef> Current Sold</th>
+    <td mat-cell *matCellDef="let account"> {{account.soldCurr}} </td>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description</th>
+    <td mat-cell *matCellDef="let account"> {{account.description}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
