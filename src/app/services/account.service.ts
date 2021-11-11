@@ -14,6 +14,13 @@ export class AccountService {
   getAcc(){
     return this.afs.collection<AccountModel>(this.dbPath);
   }
+
+  getAccByAccId(accountId: number) {
+    return this.afs.collection<AccountModel>(this.dbPath, ref => ref.where('accountId', '==', accountId).limit(1));
+  }
+
+  updateSoldCurr(id: string, processedSum: number){
+    const data = {"soldCurr": processedSum};
+    return this.afs.collection(this.dbPath).doc(id).set(data);
+  }
 }
-
-

@@ -8,5 +8,5 @@ export interface AccountModel {
   description: string,
   accType: accTypeEnum,
   soldInit: number,
-  soldCurr: number
+  soldCurr: number,
 }

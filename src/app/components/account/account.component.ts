@@ -12,10 +12,9 @@ import {map} from "rxjs/operators";
 export class AccountComponent implements OnInit {
   accountForm = new FormGroup({
     accNumber: new FormControl(0, [Validators.required, Validators.pattern('[0-9]{5}')]),
-    description: new FormControl('', [Validators.maxLength(50)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     accType: new FormControl(null, [Validators.required]),
-    soldInit: new FormControl(0, [Validators.min(0)]),
-    soldCurr: new FormControl(0, [Validators.min(0)])
+    soldInit: new FormControl(0, [Validators.required, Validators.min(0)]),
   })
   accounts: AccountModel[]
   constructor(
@@ -25,6 +24,7 @@ export class AccountComponent implements OnInit {
 
   onSubmit(): void {
     const account: AccountModel = this.accountForm.value;
+    account.soldCurr = account.soldInit
     this.accService.createAcc(account)
   }
 
