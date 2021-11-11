@@ -1,0 +1,27 @@
+<form>
+  <h2> Add transaction </h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Creditor Account Number: </mat-label>
+    <input matInput id="cred-acc-number" type="number" formControlName="credAccNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Debitor Account Number: </mat-label>
+    <input matInput id="deb-acc-number" type="number" formControlName="debAccNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Transactioned Sum: </mat-label>
+    <input matInput id="processed-sum" type="number" formControlName="sum">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Transaction Description: </mat-label>
+    <input matInput id="transaction-desc" type="number" formControlName="desc">
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit"> Submit</button>
+
+  <app-table [data]="transactions"></app-table>
+</form>

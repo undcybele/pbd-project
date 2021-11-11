@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class TransactionService {
 
   constructor() { }
+
+  executeTransaction(debAccId: number, credAccId: number, processedSum: number){
+
+  }
 }
