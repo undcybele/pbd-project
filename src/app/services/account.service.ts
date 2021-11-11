@@ -7,10 +7,7 @@ import {AccountModel, accTypeEnum} from "../models/account.model";
 })
 export class AccountService {
   dbPath = "accounts"
-
-  constructor(private afs: AngularFirestore) {
-  }
-
+  constructor(private afs: AngularFirestore) { }
   createAcc(acc: AccountModel) {
     this.afs.collection<AccountModel>(this.dbPath).add(acc)
   }
