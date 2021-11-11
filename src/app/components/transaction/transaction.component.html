@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
   <h2> Add transaction </h2>
 
   <mat-form-field appearance="outline">
@@ -23,5 +23,5 @@
 
   <button mat-flat-button color="primary" type="submit"> Submit</button>
 
-  <app-table [data]="transactions"></app-table>
+<!--  <app-table [data]="transactions"></app-table>-->
 </form>
