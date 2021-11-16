@@ -23,7 +23,4 @@ export class TransactionService {
   //   return 0
   // }
 
-  executeTransaction(debAccId: number, credAccId: number, processedSum: number){
-
-  }
 }

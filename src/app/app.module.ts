@@ -17,13 +17,15 @@ import { TableComponent } from './shared/table/table.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import { TransactionComponent } from './components/transaction/transaction.component';
+import { TransactionTableComponent } from './shared/transaction-table/transaction-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     TableComponent,
-    TransactionComponent
+    TransactionComponent,
+    TransactionTableComponent
   ],
     imports: [
         BrowserModule,
