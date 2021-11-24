@@ -39,6 +39,4 @@ export class AccountComponent implements OnInit {
       )
     ).subscribe(data => this.accounts = data)
   }
-
 }
-
