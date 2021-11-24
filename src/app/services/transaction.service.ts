@@ -15,12 +15,4 @@ export class TransactionService {
   getTransactions(){
     return this.afs.collection<TransactionModel>(this.dbPath);
   }
-
-  //for task e
-  // getAllForAcc(id: string){
-  //   let debAccs = this.afs.collection<TransactionModel>(this.dbPath, ref => ref.where('idDebAcc', '==', id))
-  //   let credAccs = this.afs.collection<TransactionModel>(this.dbPath, ref => ref.where('idCredAcc', '==', id))
-  //   return 0
-  // }
-
 }

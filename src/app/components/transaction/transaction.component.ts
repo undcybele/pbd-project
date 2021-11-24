@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {TransactionModel} from 'src/app/models/transaction.model';
+import { AccountService } from 'src/app/services/account.service';
 import {TransactionService} from 'src/app/services/transaction.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class TransactionComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
+    private accountService: AccountService
   ) {
   }
 
@@ -32,6 +34,9 @@ export class TransactionComponent implements OnInit {
 
       let newId = this.transactions.length
       transaction.transId = newId++
+
+      this.accountService.updateSoldCurr(transaction.idCredAcc, transaction.sum)
+      this.accountService.updateSoldCurr(transaction.idDebAcc, -transaction.sum)
 
       this.transactionService.createTransactions(transaction)
     }
