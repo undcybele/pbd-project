@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { TransactionModel } from '../models/transaction.model';
 
 @Injectable({
@@ -14,6 +14,17 @@ export class TransactionService {
   }
   getTransactions(){
     return this.afs.collection<TransactionModel>(this.dbPath);
+  }
+  getTransactionsByDebAccountId(id: string){
+    return this.afs.collection<TransactionModel>(this.dbPath, ref => ref.where('idDebAcc', '==', id));
+  }
+
+  getTransactionsByCredAccountId(id: string){
+    return this.afs.collection<TransactionModel>(this.dbPath, ref => ref.where('idCredAcc', '==', id));
+  }
+
+  getTransactionsByAccountId(id: string){
+    return this.getTransactionsByDebAccountId(id)
   }
 
   //for task e

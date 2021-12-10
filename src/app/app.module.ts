@@ -18,6 +18,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionTableComponent } from './shared/transaction-table/transaction-table.component';
+import { AccountTransactionComponent } from './components/account-transaction/account-transaction.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TransactionTableComponent } from './shared/transaction-table/transactio
     AccountComponent,
     TableComponent,
     TransactionComponent,
-    TransactionTableComponent
+    TransactionTableComponent,
+    AccountTransactionComponent
   ],
     imports: [
         BrowserModule,
