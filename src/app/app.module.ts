@@ -34,7 +34,7 @@ import { CommonModule } from '@angular/common';
     TableComponent,
     TransactionComponent,
     TransactionTableComponent,
-    AccountTransactionComponent
+    AccountTransactionComponent,
     PerioadaTimpComponent,
     BalanceTableComponent,
     BalanceComponent,

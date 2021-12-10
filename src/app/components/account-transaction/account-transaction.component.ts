@@ -14,18 +14,21 @@ export class AccountTransactionComponent implements OnInit {
     accNumber: new FormControl(0, [Validators.required, Validators.pattern('[0-9]{5}')])
   })
   accountTransactions: TransactionModel[] = []
+  accountNumber: number
 
   constructor(
     private transactionService: TransactionService
   ) { }
 
   onSubmit(): void{
-    const accId: number = this.accountTransactionsForm.value;
-
-    if(this.accountTransactions !== undefined) console.log(this.accountTransactions)
+    this.accountNumber = this.accountTransactionsForm.value.accNumber;
+    console.log(this.accountNumber);
+    this.accountTransactions = this.transactionService.getTransactionsByAccountId(this.accountNumber);
+    console.log(this.accountTransactions);
   }
 
   ngOnInit(): void {
+
   }
 
 }
