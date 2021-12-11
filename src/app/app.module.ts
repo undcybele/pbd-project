@@ -22,10 +22,10 @@ import { AccountTransactionComponent } from './components/account-transaction/ac
 import { PerioadaTimpComponent } from './components/perioada-timp/perioada-timp.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BalanceTableComponent } from './shared/balance-table/balance-table.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { BalanceComponent } from './components/balance/balance.component';
 import { AccountTypeComponent } from './components/account-type/account-type.component';
 import { CommonModule } from '@angular/common';
+import { AccountTopComponent } from './components/account-top/account-top.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +38,8 @@ import { CommonModule } from '@angular/common';
     PerioadaTimpComponent,
     BalanceTableComponent,
     BalanceComponent,
-    HomepageComponent,
-    AccountTypeComponent
+    AccountTypeComponent,
+    AccountTopComponent
   ],
     imports: [
         BrowserModule,

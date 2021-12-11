@@ -1,5 +1,5 @@
 export enum accTypeEnum {
-  "ca",  "pa", "ac"
+  "CA",  "PA", "AC"
 }
 
 export interface AccountModel {

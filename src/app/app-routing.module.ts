@@ -6,6 +6,7 @@ import { BalanceComponent } from './components/balance/balance.component';
 import { PerioadaTimpComponent } from './components/perioada-timp/perioada-timp.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import {AccountTransactionComponent} from "./components/account-transaction/account-transaction.component";
+import { AccountTopComponent } from './components/account-top/account-top.component';
 
 const routes: Routes = [
   { path: 'transactions', component: TransactionComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'perioada-timp', component: PerioadaTimpComponent },
   { path: 'solduri-totale', component: BalanceComponent },
   { path: 'cont-tip', component: AccountTypeComponent },
-  { path: 'account-transactions', component: AccountTransactionComponent }
+  { path: 'account-transactions', component: AccountTransactionComponent },
+  { path: 'cont-top', component: AccountTopComponent },
 ];
 
 @NgModule({

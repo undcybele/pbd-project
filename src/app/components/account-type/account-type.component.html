@@ -1,12 +1,10 @@
 <h3>Alege tipul contului:</h3>
 <mat-form-field appearance="fill">
   <mat-label>Tip cont</mat-label>
-  <mat-select [(ngModel)]="selectedValue" name="type" >
+  <mat-select [(value)]="selectedValue" name="type" (valueChange)="getTransByType()">
     <mat-option *ngFor="let type of types" [value]="type.value">{{type.viewValue}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<p>{{selectedValue}}</p>
-
-<app-table [data]="accountsType"></app-table>
+<app-transaction-table [data]="transactionsType"></app-transaction-table>
 

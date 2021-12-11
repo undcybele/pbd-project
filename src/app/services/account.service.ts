@@ -59,8 +59,8 @@ export class AccountService {
   }
 
   //for task h
-  getAllByType(searchedAccType: accTypeEnum) {
-    return this.afs.collection<AccountModel>(this.dbPath, ref => ref.where('accType', '==', searchedAccType))
+  getAllByType(searchedAccType: any) {
+    return this.afs.collection<AccountModel>(this.dbPath, ref => ref.where('accType', '==', searchedAccType.toString()))
   }
 }
 
