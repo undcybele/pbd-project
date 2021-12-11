@@ -1,0 +1,14 @@
+<form [formGroup]="accountTransactionsForm" (ngSubmit)="onSubmit()">
+  <h2>Type in the number of the account</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Account Number: </mat-label>
+    <input matInput id="acc-number" type="number" formControlName="accNumber">
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit"> Submit</button>
+</form>
+
+<div *ngIf="accountTransactions.length > 0">
+<app-transaction-table [data]="accountTransactions"></app-transaction-table>
+</div>

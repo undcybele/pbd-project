@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/compat/firestore';
-import {TransactionModel} from '../models/transaction.model';
+import { Injectable } from '@angular/core';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
+import { TransactionModel } from '../models/transaction.model';
+import {filter, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,22 @@ export class TransactionService {
 
   getTransactions() {
     return this.afs.collection<TransactionModel>(this.dbPath);
+  }
+
+  getTransactionsByAccountId(accNumber: number){
+    let transactionsByAccountId: TransactionModel[] = [];
+    this.getTransactions().snapshotChanges().pipe(
+      map(changes =>
+        changes.map (c => ({...c.payload.doc.data()}))
+      )
+      // map( c => (c.filter(
+      //   d => {
+      //     return (d.idCredAcc == accNumber || d.idDebAcc == accNumber)
+      //   }
+      //   )))
+    ).subscribe(data => transactionsByAccountId = data)
+    console.log(transactionsByAccountId);
+    return transactionsByAccountId;
   }
 
   getTransactionsByDate() {

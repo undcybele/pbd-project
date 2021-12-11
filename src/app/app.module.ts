@@ -18,11 +18,12 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionTableComponent } from './shared/transaction-table/transaction-table.component';
+import { AccountTransactionComponent } from './components/account-transaction/account-transaction.component';
 import { PerioadaTimpComponent } from './components/perioada-timp/perioada-timp.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BalanceTableComponent } from './shared/balance-table/balance-table.component';
-import { BalanceComponent } from './components/balance/balance.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { BalanceComponent } from './components/balance/balance.component';
 import { AccountTypeComponent } from './components/account-type/account-type.component';
 import { CommonModule } from '@angular/common';
 
@@ -33,6 +34,7 @@ import { CommonModule } from '@angular/common';
     TableComponent,
     TransactionComponent,
     TransactionTableComponent,
+    AccountTransactionComponent,
     PerioadaTimpComponent,
     BalanceTableComponent,
     BalanceComponent,
