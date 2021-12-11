@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
-import { TransactionModel } from '../models/transaction.model';
-import {filter, map} from "rxjs/operators";
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
+import { AccountModel } from '../models/account.model';
+import {TransactionModel} from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +21,6 @@ export class TransactionService {
     return this.afs.collection<TransactionModel>(this.dbPath);
   }
 
-  getTransactionsByAccountId(accNumber: number){
-    let transactionsByAccountId: TransactionModel[] = [];
-    this.getTransactions().snapshotChanges().pipe(
-      map(changes =>
-        changes.map (c => ({...c.payload.doc.data()}))
-      )
-      // map( c => (c.filter(
-      //   d => {
-      //     return (d.idCredAcc == accNumber || d.idDebAcc == accNumber)
-      //   }
-      //   )))
-    ).subscribe(data => transactionsByAccountId = data)
-    console.log(transactionsByAccountId);
-    return transactionsByAccountId;
-  }
-
   getTransactionsByDate() {
     let beginDate = new Date("01.01.2010").toLocaleString('ro-RO', {
       day: '2-digit',
@@ -52,5 +37,22 @@ export class TransactionService {
         ref
           .where('date', '>', beginDate)
           .where('date', '<', endDate))
+  }
+
+  getTotalBalanceForSingleAcc(acc: AccountModel, transactions: Array<TransactionModel>, all) {
+    let sumDeb = 0
+    let sumCred = 0
+    transactions.filter(trans =>
+      trans.idDebAcc === acc.accNumber || trans.idCredAcc === acc.accNumber)
+      .forEach(trans => {
+          if (trans.idCredAcc === acc.accNumber) {
+            sumCred += trans.sum
+          } else {
+            sumDeb += trans.sum
+          }
+        }
+      )
+    all.push({accNumber: acc.accNumber, soldInit: acc.soldInit, totalDeb: sumDeb, totalCred: sumCred})
+    return all;
   }
 }

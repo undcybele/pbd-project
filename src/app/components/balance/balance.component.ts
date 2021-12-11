@@ -48,30 +48,13 @@ export class BalanceComponent implements OnInit {
       map(([accounts, transactions]) => {
         let all = []
         accounts.map(acc => {
-          all.concat(this.getTotalBalanceForSingleAcc(acc, transactions, all));
+          all.concat(this.transactionService.getTotalBalanceForSingleAcc(acc, transactions, all));
         })
         return all;
       })
     ).subscribe(data => {
       this.solduriTotale = data
     })
-  }
-
-  getTotalBalanceForSingleAcc(acc: AccountModel, transactions: Array<TransactionModel>, all) {
-    let sumDeb = 0
-    let sumCred = 0
-    transactions.filter(trans =>
-      trans.idDebAcc === acc.accNumber || trans.idCredAcc === acc.accNumber)
-      .forEach(trans => {
-          if (trans.idCredAcc === acc.accNumber) {
-            sumCred += trans.sum
-          } else {
-            sumDeb += trans.sum
-          }
-        }
-      )
-    all.push({accNumber: acc.accNumber, soldInit: acc.soldInit, totalDeb: sumDeb, totalCred: sumCred})
-    return all;
   }
 
   getAccs() {
