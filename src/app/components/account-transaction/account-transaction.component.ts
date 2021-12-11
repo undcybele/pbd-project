@@ -3,6 +3,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TransactionModel} from "../../models/transaction.model";
 import {map} from "rxjs/operators";
 import {TransactionService} from "../../services/transaction.service";
+import { Observable } from 'rxjs';
+import { AccountModel } from 'src/app/models/account.model';
+import { AccountService } from 'src/app/services/account.service';
+import { combineLatest } from 'rxjs/internal/observable/combineLatest';
 
 @Component({
   selector: 'app-account-transaction',
@@ -16,19 +20,42 @@ export class AccountTransactionComponent implements OnInit {
   accountTransactions: TransactionModel[] = []
   accountNumber: number
 
+  transactions$: Observable<Array<TransactionModel>> = new Observable();
+  accounts$: Observable<Array<AccountModel>> = new Observable();
+
   constructor(
-    private transactionService: TransactionService
+    private transService: TransactionService,
+    private accService: AccountService
   ) { }
 
   onSubmit(): void{
     this.accountNumber = this.accountTransactionsForm.value.accNumber;
     console.log(this.accountNumber);
-    this.accountTransactions = this.transactionService.getTransactionsByAccountId(this.accountNumber);
-    console.log(this.accountTransactions);
+    this.getTransactionsByAccountId(this.accountNumber);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  //returneaza toate tranzactiile pentru un singur cont
+  getTransactionsByAccountId(accNumber: number){
+    this.transService.getTransactions().snapshotChanges().pipe(
+      map(changes =>
+        changes.map (c => ({...c.payload.doc.data()}))
+      ),
+      map( c => (c.filter(
+        d => {
+          return (d.idCredAcc == accNumber || d.idDebAcc == accNumber)
+        }
+      )))
+    ).subscribe(data => {this.accountTransactions = data
+      console.log(data)})
   }
 
+  getTrans() {
+    this.transactions$ = this.transService.getTransactions().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({...c.payload.doc.data()}))
+      )
+    );
+  }
 }
