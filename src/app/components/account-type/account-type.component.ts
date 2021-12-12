@@ -24,7 +24,6 @@ export class AccountTypeComponent implements OnInit {
   transactions$: Observable<Array<TransactionModel>> = new Observable();
   accountsType$: Observable<Array<AccountModel>> = new Observable();
 
-
   constructor(
     private accService: AccountService,
     private transService: TransactionService,

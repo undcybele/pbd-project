@@ -16,8 +16,8 @@ export class TransactionComponent implements OnInit {
   transactionForm = new FormGroup({
     idCredAcc: new FormControl('', [Validators.required]),
     idDebAcc: new FormControl('', [Validators.required]),
-    sum: new FormControl(0, [Validators.required]),
-    desc: new FormControl('', [Validators.required]),
+    sum: new FormControl(0, [Validators.required, Validators.max(10000)]),
+    desc: new FormControl('', [Validators.required, Validators.maxLength(10)]),
   })
   transactions: TransactionModel[]
 
