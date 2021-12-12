@@ -30,7 +30,6 @@ export class AccountTransactionComponent implements OnInit {
 
   onSubmit(): void{
     this.accountNumber = this.accountTransactionsForm.value.accNumber;
-    console.log(this.accountNumber);
     this.getTransactionsByAccountId(this.accountNumber);
   }
 
@@ -47,8 +46,7 @@ export class AccountTransactionComponent implements OnInit {
           return (d.idCredAcc == accNumber || d.idDebAcc == accNumber)
         }
       )))
-    ).subscribe(data => {this.accountTransactions = data
-      console.log(data)})
+    ).subscribe(data => {this.accountTransactions = data})
   }
 
   getTrans() {
