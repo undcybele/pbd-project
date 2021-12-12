@@ -18,7 +18,7 @@ export class TransactionService {
   }
 
   getTransactions() {
-    return this.afs.collection<TransactionModel>(this.dbPath);
+    return this.afs.collection<TransactionModel>(this.dbPath, ref => ref.orderBy('transId', "asc"));
   }
 
   getTransactionsByDate() {

@@ -26,6 +26,7 @@ import { BalanceComponent } from './components/balance/balance.component';
 import { AccountTypeComponent } from './components/account-type/account-type.component';
 import { CommonModule } from '@angular/common';
 import { AccountTopComponent } from './components/account-top/account-top.component';
+import { DeleteAccComponent } from './components/delete-acc/delete-acc.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AccountTopComponent } from './components/account-top/account-top.compon
     BalanceTableComponent,
     BalanceComponent,
     AccountTypeComponent,
-    AccountTopComponent
+    AccountTopComponent,
+    DeleteAccComponent
   ],
     imports: [
         BrowserModule,

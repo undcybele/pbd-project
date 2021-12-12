@@ -18,7 +18,7 @@ export class AccountService {
   }
 
   getAcc() {
-    return this.afs.collection<AccountModel>(this.dbPath);
+    return this.afs.collection<AccountModel>(this.dbPath, ref => ref.orderBy('accNumber', "asc"));
   }
 
   getAccByAccId(accNumber: number) {
@@ -43,8 +43,6 @@ export class AccountService {
       accounts = data
       currAccSold = accounts[0]!.soldCurr
       const processedSum = currAccSold - transactionSum
-      console.log(processedSum)
-
       const d = {"soldCurr": processedSum}
       try{
         if (ok === 0) {
@@ -61,6 +59,10 @@ export class AccountService {
   //for task h
   getAllByType(searchedAccType: any) {
     return this.afs.collection<AccountModel>(this.dbPath, ref => ref.where('accType', '==', searchedAccType.toString()))
+  }
+
+  deleteAccount(accId: string){
+    return this.afs.collection<AccountModel>(this.dbPath).doc(accId).delete();
   }
 }
 

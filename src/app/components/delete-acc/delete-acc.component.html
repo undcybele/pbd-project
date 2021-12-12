@@ -1,0 +1,10 @@
+<form [formGroup]="accountTransactionsForm" (ngSubmit)="onSubmit()">
+  <h2>Introdu numarul contului</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Numarul contului: </mat-label>
+    <input matInput id="acc-number" type="number" formControlName="accNumber">
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit"> Sterge</button>
+</form>
